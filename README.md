@@ -4,11 +4,15 @@ this is port of [family.scss](https://github.com/LukyVj/family.scss) to stylus
 
 **Installation:**
 
-1- first clone the repo:
+bower:
 
-    $git clone https://github.com/nusususuzu/family.styl.git
+    $ bower install family.styl
 
-2- import the mixin file:
+git:
+
+    $ git clone https://github.com/nusususuzu/family.styl.git
+
+and import the mixin file:
 
     @import 'family.styl'
 

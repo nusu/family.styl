@@ -1,0 +1,14 @@
+{
+  "name": "family.styl",
+  "homepage": "https://github.com/nusususuzu/family.styl",
+  "authors": [
+    "nusususuzu <nusususuzu@gmail.com>"
+  ],
+  "description": "port of family.scss to stylus",
+  "main": "source/family.styl",
+  "keywords": [
+    "stylus",
+    "mixin"
+  ],
+  "license": "MIT"
+}
