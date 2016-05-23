@@ -23,9 +23,9 @@ mixin name's are same as family.scss, in stylus we use as block mixin
 Input:
 
     ul li
-    background transparent
-    first(3)
-      background pink
+      background transparent
+      first(3)
+        background pink
 
 Output:
 
