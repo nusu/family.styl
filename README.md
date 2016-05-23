@@ -3,6 +3,7 @@
 this is port of [family.scss](https://github.com/LukyVj/family.scss) to stylus
 
 **Installation:**
+
 1- first clone the repo:
 
     $git clone https://github.com/nusususuzu/family.styl.git
@@ -12,7 +13,9 @@ this is port of [family.scss](https://github.com/LukyVj/family.scss) to stylus
     @import 'family.styl'
 
 **Use the mixins:**
-mixin name's are same as family.scss, in stylus we use as block 
+
+mixin name's are same as family.scss, in stylus we use as block mixin
+
 Input:
 
     ul li
