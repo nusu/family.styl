@@ -31,4 +31,3 @@ Output:
 
 detailed mixin documentation:
   [family.scss](http://lukyvj.github.io/family.scss/)
-
