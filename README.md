@@ -29,7 +29,7 @@ Output:
       background: transparent;
     }
     ul li:nth-child(-n + 3) {
-      background: red;
+      background: pink;
     }
 
 detailed mixin documentation:
