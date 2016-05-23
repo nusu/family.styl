@@ -2,7 +2,7 @@
 /// @group with arguments
 /// @name First
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the block directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
 first(num)
@@ -13,9 +13,9 @@ first(num)
 /// @group with arguments
 /// @name last
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 last(num)
    &:nth-last-child(-n + {num})
     {block}
@@ -24,9 +24,9 @@ last(num)
 /// @group with arguments
 /// @name after-first
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 after-first(num)
   &:nth-child(n+{num + 1})
     {block}
@@ -35,9 +35,9 @@ after-first(num)
 /// @group with arguments
 /// @name from-end
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 from-end(num)
   &:nth-last-child({num})
    {block}
@@ -46,7 +46,7 @@ from-end(num)
 /// @group with arguments
 /// @name between
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 between(first,last)
   &:nth-child(n+{first}):nth-child(-n+{last})
     {block}
@@ -55,7 +55,7 @@ between(first,last)
 /// @group with arguments
 /// @name pair-between
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 pair-between(first,last)
   &:nth-child(even):nth-child(n + {first}):nth-child(-n + {last})
     {block}
@@ -64,7 +64,7 @@ pair-between(first,last)
 /// @group with arguments
 /// @name impair-between
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 impair-between(first,last)
   &:nth-child(odd):nth-child(n + {first}):nth-child(-n + {last})
     {block}
@@ -73,7 +73,7 @@ impair-between(first,last)
 /// @group with arguments
 /// @name n-between
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 n-between(num,first,last)
   &:nth-child({num}n):nth-child(n + {first}):nth-child(-n + {last})
     {block}
@@ -83,9 +83,9 @@ n-between(num,first,last)
 /// @group with arguments
 /// @name all-but
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 
 all-but(num)
   &:not(:nth-child({num}))
@@ -96,9 +96,9 @@ all-but(num)
 /// @group with arguments
 /// @name each
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 /// @alias every
 each(num)
   &:nth-child({num}n)
@@ -109,9 +109,9 @@ each(num)
 /// @group with arguments
 /// @name every
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 /// @alias each
 every(num)
   &:nth-child({num}n)
@@ -122,9 +122,9 @@ every(num)
 /// @group with arguments
 /// @name from-first-last
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 from-first-last(num)
   &:nth-child({num}),
   &:nth-last-child({num})
@@ -135,9 +135,9 @@ from-first-last(num)
 /// @group with arguments
 /// @name middle
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 middle(num)
   &:nth-child({round(num/2)})
     {block}
@@ -147,9 +147,9 @@ middle(num)
 /// @group with arguments
 /// @name all-but-first-last
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - id of the child
-/// @require $num - Cannot work with an empty argument
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - id of the child
+/// @require num - Cannot work with an empty argument
 all-but-first-last(num)
   &:nth-child(n+{num}):nth-last-child(n+{num})
     {block}
@@ -158,7 +158,7 @@ all-but-first-last(num)
 /// @name first-of
 /// @group I/O
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 first-of(limit)
   &:nth-last-child({limit}):first-child
     {block}
@@ -168,7 +168,7 @@ first-of(limit)
 /// @name last-of
 /// @group I/O
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 last-of(limit)
   &:nth-of-type({limit}):nth-last-of-type(1)
     {block}
@@ -178,7 +178,7 @@ last-of(limit)
 /// @group no argumants
 /// @name pair()
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 pair()
   &:nth-child(even)
     {block}
@@ -188,7 +188,7 @@ pair()
 /// @group no argumants
 /// @name even()
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 even()
   &:nth-child(even)
     {block}
@@ -198,7 +198,7 @@ even()
 /// @group no argumants
 /// @name impair
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 impair()
   &:nth-child(odd)
     {block}
@@ -207,7 +207,7 @@ impair()
 /// @group no argumants
 /// @name odd
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @alias impair
 odd()
   &:nth-child(odd)
@@ -218,7 +218,7 @@ odd()
 /// @group no argumants
 /// @name first-last
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 first-last()
   &:first-child,
   &:last-child
@@ -229,7 +229,7 @@ first-last()
 /// @group no argumants
 /// @name unique
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 unique()
   &:only-child
     {block}
@@ -238,7 +238,7 @@ unique()
 /// @group no argumants
 /// @name only()
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @alias unique
 only()
   &:only-child
@@ -248,7 +248,7 @@ only()
 /// @group no argumants
 /// @name not-unique
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 not-unique()
   &:not(:only-child)
     {block}
@@ -259,10 +259,10 @@ not-unique()
 /// @group using functions
 /// @name child-index
 /// @access public
-/// @content [ Write the style you want to apply to the childrent, and it will be added within the @content directive]
-/// @param {numeric} $num - Number of children
-/// @param {string} $direction [forward] - Direction of the sort
-/// @param {numeric} $index [0] - Index of the sorting
+/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
+/// @param {numeric} num - Number of children
+/// @param {string} direction [forward] - Direction of the sort
+/// @param {numeric} index [0] - Index of the sorting
 child-index(num, direction='forward', index=0)
   for i in num
     if direction == 'forward'
@@ -277,8 +277,8 @@ child-index(num, direction='forward', index=0)
 /// Used by the child-index mixin. It will returned the proper sorted numbers depending on the index value.
 /// @name orderIndex
 /// @access public
-/// @param {numeric} $num - Number of children
-/// @param {numeric} $index [0] - Index of the sorting
+/// @param {numeric} num - Number of children
+/// @param {numeric} index [0] - Index of the sorting
 orderIndex(i, index)
   i = index + i
   return i
