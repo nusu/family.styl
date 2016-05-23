@@ -11,7 +11,7 @@ this is port of [family.scss](https://github.com/LukyVj/family.scss) to stylus
 
     @import 'family.styl'
 
-**Use the mixins: **
+**Use the mixins:**
 mixin name's are same as family.scss, in stylus we use as block 
 Input:
 
