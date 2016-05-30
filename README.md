@@ -1,6 +1,5 @@
 **family.styl**
 -------
-## Version v1.0.4
 this is port of [family.scss](https://github.com/LukyVj/family.scss) to stylus
 
 **Installation:**
