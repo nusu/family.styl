@@ -5,9 +5,13 @@
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-first(num)
-  &:nth-child(-n + {num})
-    {block}
+fm-first(num)
+  if num == 1
+    &:first-child
+      {block}
+  else
+    &:nth-child(-n + {num})
+      {block}
 
 /// Select all children from the last to **n**
 /// @group with arguments
@@ -16,10 +20,10 @@ first(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-last(num)
-   &:nth-last-child(-n + {num})
+fm-last(num)
+  &:nth-last-child(-n + {num})
     {block}
-    
+
 /// Select all children after the first to **n**
 /// @group with arguments
 /// @name after-first
@@ -27,7 +31,7 @@ last(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-after-first(num)
+fm-after-first(num)
   &:nth-child(n+{num + 1})
     {block}
 
@@ -38,25 +42,23 @@ after-first(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-from-end(num)
+fm-from-end(num)
   &:nth-last-child({num})
-   {block}
+    {block}
 
 /// Select all children between **first** and **last**
 /// @group with arguments
 /// @name between
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-between(first,last)
+fm-between(first,last)
   &:nth-child(n+{first}):nth-child(-n+{last})
     {block}
 
-/// Select all even children between **first** and **last**
-/// @group with arguments
-/// @name pair-between
-/// @access public
-/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-pair-between(first,last)
+/// Select all even children between **first** and **last**.
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+fm-even-between(first, last)
   &:nth-child(even):nth-child(n + {first}):nth-child(-n + {last})
     {block}
 
@@ -65,7 +67,7 @@ pair-between(first,last)
 /// @name impair-between
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-impair-between(first,last)
+fm-odd-between(first,last)
   &:nth-child(odd):nth-child(n + {first}):nth-child(-n + {last})
     {block}
 
@@ -74,7 +76,7 @@ impair-between(first,last)
 /// @name n-between
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-n-between(num,first,last)
+fm-n-between(num,first,last)
   &:nth-child({num}n):nth-child(n + {first}):nth-child(-n + {last})
     {block}
 
@@ -87,7 +89,7 @@ n-between(num,first,last)
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
 
-all-but(num)
+fm-all-but(num)
   &:not(:nth-child({num}))
     {block}
 
@@ -100,7 +102,7 @@ all-but(num)
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
 /// @alias every
-each(num)
+fm-each(num)
   &:nth-child({num}n)
     {block}
 
@@ -113,7 +115,7 @@ each(num)
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
 /// @alias each
-every(num)
+fm-every(num)
   &:nth-child({num}n)
     {block}
 
@@ -125,7 +127,7 @@ every(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-from-first-last(num)
+fm-from-first-last(num)
   &:nth-child({num}),
   &:nth-last-child({num})
     {block}
@@ -138,7 +140,7 @@ from-first-last(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-middle(num)
+fm-middle(num)
   &:nth-child({round(num/2)})
     {block}
 
@@ -150,7 +152,7 @@ middle(num)
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @param {numeric} num - id of the child
 /// @require num - Cannot work with an empty argument
-all-but-first-last(num)
+fm-all-but-first-last(num)
   &:nth-child(n+{num}):nth-last-child(n+{num})
     {block}
 
@@ -159,7 +161,7 @@ all-but-first-last(num)
 /// @group I/O
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-first-of(limit)
+fm-first-of(limit)
   &:nth-last-child({limit}):first-child
     {block}
 
@@ -169,38 +171,49 @@ first-of(limit)
 /// @group I/O
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-last-of(limit)
+fm-last-of(limit)
   &:nth-of-type({limit}):nth-last-of-type(1)
     {block}
 
 
-///  Select all even children
-/// @group no argumants
-/// @name pair()
-/// @access public
-/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-pair()
-  &:nth-child(even)
+/// if there is not as much as item as you set in `$num`.
+/// @group Quantity queries
+/// @param {number} $limit
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+fm-at-least(num)
+  child = get-child(selector())
+  &:nth-last-child(n + {num}),
+  &:nth-last-child(n + {num}) ~ {child}
     {block}
 
+/// This quantity-query mixin will select every items if there is at most `$num` items. It will not
+/// if there is not as much as item as you set in `$num`.
+/// @group Quantity queries
+/// @param {number} $limit
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+fm-at-most(num)
+  child = get-child(selector())
+  &:nth-last-child(-n + {num}):first-child,
+  &:nth-last-child(-n + {num}):first-child ~ {child}
+    {block}
+
+/// This quantity-query mixin will select every items only if there is between `$min` and `$max` items.
+/// @group Quantity queries
+/// @param {number} $limit
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+fm-in-between(minimum, maximum)
+  child = get-child(selector())
+  &:nth-last-child(n + {minimum}):nth-last-child(-n + {maximum}):first-child,
+  &:nth-last-child(n + {minimum}):nth-last-child(-n + {maximum}):first-child ~ {child}
+    {block}
 
 ///  Select all even children
 /// @group no argumants
 /// @name even()
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-even()
+fm-even()
   &:nth-child(even)
-    {block}
-
-
-/// Select all odd children
-/// @group no argumants
-/// @name impair
-/// @access public
-/// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-impair()
-  &:nth-child(odd)
     {block}
 
 /// Select all odd children
@@ -209,7 +222,7 @@ impair()
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @alias impair
-odd()
+fm-odd()
   &:nth-child(odd)
     {block}
 
@@ -219,7 +232,7 @@ odd()
 /// @name first-last
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-first-last()
+fm-first-last()
   &:first-child,
   &:last-child
     {block}
@@ -230,7 +243,7 @@ first-last()
 /// @name unique
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-unique()
+fm-unique()
   &:only-child
     {block}
 
@@ -240,7 +253,7 @@ unique()
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
 /// @alias unique
-only()
+fm-only()
   &:only-child
     {block}
 
@@ -249,7 +262,7 @@ only()
 /// @name not-unique
 /// @access public
 /// @block [ Write the style you want to apply to the childrent, and it will be added within the @block directive]
-not-unique()
+fm-not-unique()
   &:not(:only-child)
     {block}
 
@@ -282,3 +295,7 @@ child-index(num, direction='forward', index=0)
 orderIndex(i, index)
   i = index + i
   return i
+
+get-child(selector, index = 1)
+  child = split(' ', selector)
+  return child[index]
